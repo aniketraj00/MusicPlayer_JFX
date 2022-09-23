@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.aniket.musicplayer.SavePlaylistController"
+            prefHeight="200.0" prefWidth="300.0">
+
+    <content>
+        <VBox>
+            <padding>
+                <Insets top="30" left="15" right="15"/>
+            </padding>
+            <Label text="Enter Playlist Name (limit : 50) :">
+                <padding>
+                    <Insets bottom="8"/>
+                </padding>
+            </Label>
+            <TextField fx:id="playlistNameField"/>
+        </VBox>
+    </content>
+
+</DialogPane>

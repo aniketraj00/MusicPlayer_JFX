@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.aniket.musicplayer.SearchController"
+            prefHeight="500.0" prefWidth="600.0" stylesheets="@/style.css">
+
+    <content>
+        <VBox spacing="10">
+            <TextField fx:id="searchField"/>
+            <TableView VBox.vgrow="ALWAYS" fx:id="searchPlaylistTableView" id="searchTable">
+                <columns>
+                    <TableColumn text="Title" sortable="false" prefWidth="200">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="title"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Album" sortable="false" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="album"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Artist" sortable="false" prefWidth="150">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="artist"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Year" sortable="false" prefWidth="50">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="year"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+        </VBox>
+    </content>
+
+</DialogPane>

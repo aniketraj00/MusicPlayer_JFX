@@ -1,0 +1,242 @@
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.ProgressBar?>
+<BorderPane fx:id="mainWindow" fx:controller="com.aniket.musicplayer.Controller" xmlns:fx="http://javafx.com/fxml" stylesheets="@/style.css">
+    <top>
+
+        <VBox>
+
+            <MenuBar id="mainWindowMenuBar">
+                <Menu text="File">
+                    <MenuItem text="Import" onAction="#importTracks"/>
+                    <SeparatorMenuItem/>
+                    <MenuItem text="About" onAction="#about"/>
+                    <MenuItem text="Exit" onAction="#quit"/>
+                </Menu>
+            </MenuBar>
+
+            <ToolBar id="mainWindowToolbar">
+
+                <padding>
+                    <Insets top="7" bottom="7" left="8"/>
+                </padding>
+
+                <HBox spacing="5">
+
+                    <Button fx:id="importTrackBtn" onAction="#importTracks">
+                        <tooltip>
+                            <Tooltip text="Import Tracks"/>
+                        </tooltip>
+                    </Button>
+
+                    <Button fx:id="searchTrackBtn" onAction="#searchTrack">
+                        <tooltip>
+                            <Tooltip text="Search Tracks"/>
+                        </tooltip>
+                    </Button>
+
+                    <Button fx:id="displayCurrentTrackBtn" onAction="#navigateToPlayingTrack">
+                        <tooltip>
+                            <Tooltip text="Navigate to current Track"/>
+                        </tooltip>
+                    </Button>
+
+                    <Button fx:id="savePlaylistBtn" onAction="#savePlaylist">
+                        <tooltip>
+                            <Tooltip text="Save Playlist"/>
+                        </tooltip>
+                    </Button>
+
+                    <Button fx:id="deletePlaylistBtn" onAction="#deletePlaylist">
+                        <tooltip>
+                            <Tooltip text="Delete Playlist"/>
+                        </tooltip>
+                    </Button>
+
+                </HBox>
+            </ToolBar>
+        </VBox>
+    </top>
+    <center>
+        <GridPane alignment="CENTER" GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+
+            <TableView fx:id="playListTableView" id="mainWindowTable" GridPane.vgrow="ALWAYS" GridPane.hgrow="ALWAYS">
+                <columns>
+                    <TableColumn text="Title" sortable="false" prefWidth="280">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="title"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Album" sortable="false" prefWidth="150">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="album"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Artist" sortable="false" prefWidth="220">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="artist"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                    <TableColumn text="Year" sortable="false" prefWidth="100">
+                        <cellValueFactory>
+                            <PropertyValueFactory property="year"/>
+                        </cellValueFactory>
+                    </TableColumn>
+                </columns>
+            </TableView>
+
+            <VBox alignment="CENTER" spacing="5" fx:id="progressVBox">
+                <Label text="Loading ...">
+                    <font>
+                        <Font name="Courier" size="14"/>
+                    </font>
+                </Label>
+                <ProgressBar fx:id="importProgressBar" prefWidth="300" prefHeight="10"/>
+            </VBox>
+        </GridPane>
+    </center>
+
+    <right>
+
+        <GridPane prefWidth="250" alignment="TOP_CENTER" id="mainWindowSidePane">
+
+            <padding>
+                <Insets left="10" right="10"/>
+            </padding>
+
+            <Label fx:id="playlistNameLabel" GridPane.rowIndex="0" GridPane.columnIndex="0" GridPane.halignment="CENTER"
+                   textFill="#a30eff" wrapText="true">
+                <padding>
+                    <Insets bottom="18"/>
+                </padding>
+                <font>
+                    <Font name="sans-serif" size="20"/>
+                </font>
+            </Label>
+
+            <ImageView fx:id="albumArtView" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+
+            <HBox GridPane.rowIndex="2" GridPane.columnIndex="0" spacing="4" alignment="CENTER_RIGHT">
+                <padding>
+                    <Insets top="20" bottom="10"/>
+                </padding>
+                <ToggleButton fx:id="muteVolumeBtn">
+                    <tooltip>
+                        <Tooltip text="Mute"/>
+                    </tooltip>
+                </ToggleButton>
+                <Slider fx:id="volumeSlider" prefWidth="60" GridPane.halignment="CENTER">
+                    <tooltip>
+                        <Tooltip fx:id="volumeSliderTooltip"/>
+                    </tooltip>
+                </Slider>
+            </HBox>
+
+            <Slider fx:id="seekSlider" GridPane.rowIndex="3" GridPane.columnIndex="0">
+                <tooltip>
+                    <Tooltip fx:id="seekSliderTooltip"/>
+                </tooltip>
+            </Slider>
+
+            <GridPane GridPane.rowIndex="4" GridPane.columnIndex="0" alignment="CENTER">
+
+                <padding>
+                    <Insets top="10"/>
+                </padding>
+
+                <HBox spacing="7" GridPane.rowIndex="0" GridPane.columnIndex="0">
+
+                    <Button fx:id="prevTrackBtn">
+                        <tooltip>
+                            <Tooltip text="Previous Track"/>
+                        </tooltip>
+                    </Button>
+
+                    <Button fx:id="playPauseBtn">
+                        <tooltip>
+                            <Tooltip text="Play/Pause"/>
+                        </tooltip>
+                    </Button>
+
+                    <Button fx:id="nextTrackBtn">
+                        <tooltip>
+                            <Tooltip text="Next Track"/>
+                        </tooltip>
+                    </Button>
+
+                    <Button fx:id="playlistShuffleBtn">
+                        <tooltip>
+                            <Tooltip text="Shuffle Playlist"/>
+                        </tooltip>
+                    </Button>
+
+                </HBox>
+
+            </GridPane>
+
+            <VBox GridPane.rowIndex="5" GridPane.columnIndex="0" spacing="8">
+
+                <padding>
+                    <Insets top="25" left="10"/>
+                </padding>
+
+                <Label fx:id="nowPlayingLabel" wrapText="true" textFill="#a30eff">
+                    <padding>
+                        <Insets bottom="5"/>
+                    </padding>
+                    <font>
+                        <Font name="sans-serif" size="18"/>
+                    </font>
+                </Label>
+
+                <Label fx:id="trackTitleLabel" wrapText="true">
+                    <font>
+                        <Font name="Courier" size="14"/>
+                    </font>
+                </Label>
+
+                <Label fx:id="trackDurationLabel" wrapText="true">
+                    <font>
+                        <Font name="Courier" size="14"/>
+                    </font>
+                </Label>
+
+                <Label fx:id="trackAlbumLabel" wrapText="true">
+                    <font>
+                        <Font name="Courier" size="14"/>
+                    </font>
+                </Label>
+
+                <Label fx:id="trackArtistLabel" wrapText="true">
+                    <font>
+                        <Font name="Courier" size="14"/>
+                    </font>
+                </Label>
+
+                <Label fx:id="trackYearLabel">
+                    <font>
+                        <Font name="Courier" size="14"/>
+                    </font>
+                </Label>
+            </VBox>
+        </GridPane>
+    </right>
+</BorderPane>

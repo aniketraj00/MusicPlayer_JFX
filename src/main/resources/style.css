@@ -1,0 +1,30 @@
+#mainWindowTable, #searchTable {
+    -fx-focus-color : transparent;
+}
+
+#mainWindowTable .table-cell {
+    -fx-padding : 7px;
+}
+#mainWindowSidePane {
+    -fx-background-color : linear-gradient(to bottom right, #34ebb1, #34ebdf);
+}
+
+#mainWindowToolbar {
+    -fx-background-color : linear-gradient(to left, #34ebb1, #34ebc9);
+}
+
+#mainWindowMenuBar {
+    -fx-background-color : #524e4e;
+}
+
+.menu .label {
+    -fx-text-fill : #fff;
+}
+
+.menu-item .label {
+    -fx-text-fill : #000;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill : #fff;
+}
